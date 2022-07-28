@@ -10,15 +10,16 @@ import headerimage from "../assets/img/header-img.svg";
 export const Banner = () => {
     const [loopNumber, setloopNumber] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false)
-    const toRotate = ["Web Developer", "Web Designer", "UX/UI Designer"];
+    const toRotate = ["Web Developer", "Web Designer", "UX/UI Designer", "CSS Expert"];
     const [text, setText] = useState('');
-    const [delta, setDelta] = useState(300 - Math.random() * 100)
+    const [delta, setDelta] = useState(300 - Math.random() * 100);
+    const [index, setIndex] = useState(1)
     const period = 2000;
 
     useEffect(() => {
       let ticker = setInterval( () => {
         tick();
-      }, delta)
+      }, delta);
     
       return () => {
         clearInterval(ticker)
@@ -37,10 +38,15 @@ export const Banner = () => {
         }
         if (!isDeleting && updateText === fullText) {
             setIsDeleting(true);
+            setIndex(prevIndex => prevIndex - 1);
             setDelta(period);
         } else if (isDeleting && updateText === '') {
-            setIsDeleting(false);
+            setIsDeleting(false);            
             setloopNumber(loopNumber + 1);
+            setIndex(1);
+            setDelta(500);
+        } else {
+            setIndex(prevIndex => prevIndex + 1)
         }
     }
     
