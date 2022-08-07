@@ -1,11 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
 import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
+import headerimage from "../assets/img/astro3.png";
+import headerimageC from "../assets/img/astro1.png";
+import headerimageM from "../assets/img/astro2.png";
+import 'animate.css';
+import TrackVisibility from 'react-on-screen';
 
-
-import headerimage from "../assets/img/header-img.svg";
 
 export const Banner = () => {
     const [loopNumber, setloopNumber] = useState(0);
@@ -56,17 +58,38 @@ export const Banner = () => {
             <Container>
                 <Row className="align-items-center">
                     <Col xs={12} md={6} xl={7}>
+                        <TrackVisibility>
+                        {({isVisible}) =>
+                        <div className={ isVisible ? "animate__animated animate__fadeIn" : "animate__animated animate__fadeOut"  }>
                         <span className="tagline">
                             Welcome earthlings!</span>
                             <h1>{'Hi, I Am Sebastian'}<span className='wrap'> {text}</span></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         <button onClick={() => {console.log('connected')}} > Let's Connect <ArrowRightCircle size={25} />
                         </button>
+                        </div>
+                        }
 
+                        </TrackVisibility>
 
                     </Col>
-                    <Col xs={12} md={6} xl={5}>
-                        <img src={headerimage} alt="Header image" />
+                    <Col xs={12} md={6} xl={5} className='h-400'>
+
+                        <TrackVisibility>
+                        
+                        {({ isVisible }) =>
+                        <div className={ isVisible ? "animate__animated animate__fadeIn " : " animate__animated animate__fadeOut "}>
+                            <>
+                        <picture className="astronaut">
+                        <img className="color" src={headerimage} alt="Header image" />
+                        <img className="cyan" src={headerimageC} alt="Header image" />
+                        <img className="magenta"src={headerimageM} alt="Header image" />
+                        </picture>
+                        </>
+                        </div>
+                        }
+                       
+                        </TrackVisibility>
 
                     
                     </Col>

@@ -16,6 +16,32 @@
 	src: url('./assets/fonts/CentraNo2-Book.ttf');
 	font-weight: 400;
 }
+@font-face {
+  font-family: Quicksand;
+  src: url('./assets/fonts/Quicksand-Light.ttf');
+  font-weight: 100;
+}
+@font-face {
+  font-family: Quicksand;
+  src: url('./assets/fonts/Quicksand-Medium.ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: Quicksand;
+  src: url('./assets/fonts/Quicksand-Regular.ttf');
+  font-weight: 300;
+}
+@font-face {
+  font-family: Quicksand;
+  src: url('./assets/fonts/Quicksand-SemiBold.ttf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: Quicksand;
+  src: url('./assets/fonts/Quicksand-Bold.ttf');
+  font-weight: 600;
+}
+
 
 /************ Default Css ************/
 * {
@@ -35,7 +61,7 @@ body {
   position: relative;
   background-color: #121212 !important;
   color: #fff !important;
-  font-family: 'Centra', sans-serif !important;
+  font-family: 'Quicksand', sans-serif !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -43,7 +69,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   line-height: normal;
 }
-
+.h-400 {
+  height:400px;
+}
 p, a, li, button, ul {
   margin: 0;
   padding: 0;
@@ -236,7 +264,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner {
   margin-top: 0;
   padding: 260px 0 100px 0;
-  background-image: url('./assets/img/banner-bg.png');
+  background-image: url('./assets/img/bg-space.jpg');
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -252,12 +280,31 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   display: inline-block;
 }
 .banner h1 {
+  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
   font-size: 65px;
   font-weight: 700;
   letter-spacing: 0.8px;
   line-height: 1;
   margin-bottom: 20px;
   display: block;
+}
+.banner h1 .wrap {
+
+  min-height: 105px;
+}
+.banner h1 .wrap:after{
+  content:'|';
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  animation: blink 0.5s step-start 0s infinite;
+  -webkit-animation: blink 0.5s step-start 0s infinite;
+
+}
+@keyframes blink {
+  50% { opacity: 0.0; }
+}
+@-webkit-keyframes blink {
+  50% { opacity: 0.0; }
 }
 .banner p {
   color: #B8B8B8;
@@ -293,15 +340,80 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     }
     50% {
         transform: translateY(20px);
+        opacity: 0;
     }
     100% {
         transform: translateY(-20px);
+        opacity: 1;
     }
 }
-.txt-rotate > .wrap {
-  border-right: 0.08em solid #666;
-}
 
+.banner .astronaut {
+  position: relative;
+  height: 100vh;
+}
+.banner .astronaut img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 400px;
+}
+.banner .astronaut img.color{
+   z-index: 3;
+}
+.banner .astronaut img.cyan {
+  animation: buzz 3.5s infinite, blink 0.8s step-start 0s infinite;
+  animation-fill-mode: none;
+}
+.banner .astronaut img.magenta {
+  z-index: 1;
+  animation: buzz 3.8s linear infinite, blink 0.5s step-start 0s infinite;
+}
+@keyframes buzz {
+  0% {
+    transform: translateX(-5px);
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(2px);
+    transform: translateY(20px);
+    opacity:1
+  }
+  65% {
+    transform: translateX(-2px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(2px);
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+@keyframes buzz2 {
+  0% {
+    transform: translateX(2px);
+    transform: translateY(-20px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-2px);
+    transform: translateY(20px);
+    opacity: 0.6;
+  }
+  65% {
+    transform: translateX(2px);
+    opacity: 1
+  }
+  100% {
+    transform: translateX(-2px);
+    transform: translateY(-20px);
+    opacity: 0.8;
+  }
+}
 /************ Skills Css ************/
 .skill {
   padding: 0 0 50px 0;
@@ -617,4 +729,30 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   color: #B8B8B8;
   letter-spacing: 0.5px;
   margin-top: 20px;
+}
+.gauge1 {
+  --gauge-bg : #088478;
+  --gauge-value: "0";
+  --gauge-display-value :"100"
+}
+.gauge .ticks .t1 {
+  --gauge-tithe-tick : 1
+}
+.gauge .ticks .t2 {
+  --gauge-tithe-tick : 2
+}
+.gauge .ticks .t3 {
+  --gauge-tithe-tick : 3
+}
+.gauge .ticks .t4 {
+  --gauge-tithe-tick : 4
+}
+.gauge .ticks .t5 {
+  --gauge-tithe-tick : 5
+}
+.gauge .ticks .t6 {
+  --gauge-tithe-tick : 6
+}
+.gauge .ticks .t7 {
+  --gauge-tithe-tick : 7
 }

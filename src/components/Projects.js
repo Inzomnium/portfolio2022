@@ -5,6 +5,8 @@ import projImg1 from "../assets/img/project-img1.png";
 import projImg2 from "../assets/img/project-img2.png";
 import projImg3 from "../assets/img/project-img3.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
+import TrackVisibility from 'react-on-screen';
+import 'animate.css';
 
 
 
@@ -37,6 +39,10 @@ export const Projects = () => {
 
   return (
     <section id="project" className='project'>
+         <TrackVisibility>
+                        
+                        {({ isVisible }) =>
+                        <div className={ isVisible ? "animate__animated animate__flipInX" : ""}>
             <Container>
                 <Row>
                     <Col>
@@ -83,6 +89,10 @@ export const Projects = () => {
                 </Row>
             </Container>
             <img src={colorSharp2} className='background-image-right' />
+
+            </div>
+                        }
+            </TrackVisibility>
 
     </section>
   )
