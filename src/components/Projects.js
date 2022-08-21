@@ -1,13 +1,12 @@
 import React from 'react'
 import { Container, Row, Col, Tab, TabContent, Nav } from 'react-bootstrap';
 import { ProjectCard } from './ProjectCard';
-import projImg1 from "../assets/img/project-img1.png";
-import projImg2 from "../assets/img/project-img2.png";
-import projImg3 from "../assets/img/project-img3.png";
+
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import TrackVisibility from 'react-on-screen';
 import 'animate.css';
 
+import { projects, threepjts, oldPjts } from './data/ProjectsData';
 
 
 
@@ -15,34 +14,16 @@ import 'animate.css';
 
 export const Projects = () => {
 
-    const projects = [
-        {
-            title: "Business Startup",
-            description: " Design & Development",
-            imgUrl: projImg1,
-        },
-        {
-            title: "Business Startup",
-            description: " Design & Development",
-            imgUrl: projImg2,
-        },
-        {
-            title: "Business Startup",
-            description: " Design & Development",
-            imgUrl: projImg3,
-        }
-       
-
-
-    ]
+    console.log(threepjts)
 
 
   return (
+    
     <section id="project" className='project'>
          <TrackVisibility>
                         
                         {({ isVisible }) =>
-                        <div className={ isVisible ? "animate__animated animate__flipInX" : ""}>
+                        <div className={ isVisible ? "" : ""}>
             <Container>
                 <Row>
                     <Col>
@@ -51,19 +32,19 @@ export const Projects = () => {
                         <Tab.Container id="projects-tabs" defaultActiveKey="first">
                          <Nav variant="pills" defaultActiveKey="/home">
                             <Nav.Item>
-                                <Nav.Link eventKey="first">Tab One</Nav.Link>
+                                <Nav.Link eventKey="first">Web projects</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="second">Tab Two</Nav.Link>
+                                <Nav.Link eventKey="second">Three.js Exercises</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link eventKey="third">
-                                Tab Three
+                                Old projects
                                 </Nav.Link>
                             </Nav.Item>
                          </Nav>
                          <TabContent>
-                            <Tab.Pane eventKey="first">
+                            <Tab.Pane eventKey="first" className={ isVisible ? "" : ""}>
                                 <Row className='pt-3'>
                                 {
                                     projects.map((project, index) => {
@@ -77,11 +58,35 @@ export const Projects = () => {
                                 }
                                 </Row>
                             </Tab.Pane>
-                            <Tab.Pane>
-                                Tab2
+                            <Tab.Pane eventKey="second">
+                            <Row className='pt-3'>
+                            {
+                                    threepjts.map((project, index) => {
+                                        return (
+                                            <ProjectCard 
+                                            key={index}
+                                            {...project}
+                                            />
+                                        )
+                                    })
+                                }
+                                </Row>
                             </Tab.Pane>
-                            <Tab.Pane>
-                                Tab3
+                            <Tab.Pane eventKey="third">
+                            <Row className='pt-3 Oldprojects'>
+                                {
+                                    oldPjts.map((project, index) => {
+                                        return (
+                                            <ProjectCard 
+                                            key={index}
+                                            {...project}
+                                            />
+                                        )
+                                    })
+                                }
+                                </Row>
+                            
+                               
                             </Tab.Pane>
                          </TabContent>
                          </Tab.Container>

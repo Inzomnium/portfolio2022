@@ -2,9 +2,7 @@ import React from "react"
 import { Container, Row, Col } from "react-bootstrap";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
+
 import colorSharp from "../assets/img/color-sharp.png"
 import { SkillCard } from "./SkillCard";
 
@@ -20,7 +18,7 @@ export const Skills = () => {
         },
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
-          items: 3
+          items: 4
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
@@ -50,28 +48,24 @@ export const Skills = () => {
 
                             <div className="item">
                                 
-                                <SkillCard />
-
-
-
-                                <h5>Web Development</h5>
-
+                                <SkillCard valor={99} titulo={'HTML/CSS'} />
+                                
                             </div>
 
                             <div className="item">
-                                <img src={meter2} alt='imagen' />
-                                <h5>Brand identity</h5>
-
+                                <SkillCard valor={85} titulo={'Javascript'} />
                             </div>
 
                             <div className="item">
-                                <img src={meter3} alt='imagen' />
-                                <h5>Logo design</h5>
+                                <SkillCard valor={90} titulo={'Jquery'} />
 
                             </div>
                             <div className="item">
-                                <img src={meter1} alt='imagen' />
-                                <h5>Web Development</h5>
+                                <SkillCard valor={75} titulo={'React'} />
+
+                            </div>
+                            <div className="item">
+                                <SkillCard valor={35} titulo={'Three.js'} />
 
                             </div>
                         </Carousel>

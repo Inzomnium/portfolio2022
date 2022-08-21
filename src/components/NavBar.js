@@ -1,10 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import {Navbar, Nav, Container} from 'react-bootstrap';
-import logo from '../assets/img/logo.svg';
-import navIcon1 from '../assets/img/nav-icon1.svg';
-import navIcon2 from '../assets/img/nav-icon2.svg';
-import navIcon3 from '../assets/img/nav-icon3.svg';
+import {Navbar, Nav, Container, Popover} from 'react-bootstrap';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import { FaWhatsapp, FaRegEnvelope } from "react-icons/fa";
 
 export const NavBar = () => {
     const [activeLink, setactiveLink] = useState('home')
@@ -27,11 +25,27 @@ export const NavBar = () => {
         setactiveLink(value)
     }
 
+    const popover = (
+      <Popover id="popover-basic">
+        
+        <Popover.Body>
+        <div className='social-icon' >
+                  <a href='mailto:sebacofrebarrientos@gmail.com'><FaRegEnvelope /></a>
+                   <a href='https://wa.me/56982777561?text=Hello%20:)'><FaWhatsapp /></a> 
+        </div>
+        </Popover.Body>
+      </Popover>
+    );
+
+
+
+
+
     return (
         <Navbar  expand="lg" className={scrolled ? "scrolled" : ""}>
           <Container>
             <Navbar.Brand href="#home">
-                <img src={logo} alt="logo image" />
+                <div className='logo1' id='logo'></div>
 
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav">
@@ -47,13 +61,10 @@ export const NavBar = () => {
               </Nav>
 
               <span className='navbar-text'>
-                <div className='social-icon' >
-                   <a href='#'><img src={navIcon1} alt="social logo" /></a>
-                   <a href='#'><img src={navIcon2} alt="social logo" /></a>
-                   <a href='#'><img src={navIcon3} alt="social logo" /></a>
-                    </div>
-
-                    <button className='vvd' onClick={() => console.log('conex')}><span>Let's Connect</span></button>
+                
+                    <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+                    <button className='vvd' onClick=""><span>Let's Connect</span></button>
+                    </OverlayTrigger>
               </span>
             </Navbar.Collapse>
           </Container>
